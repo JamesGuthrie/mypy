@@ -9,15 +9,15 @@ QUOTE_MINIMAL = Undefined(int)
 QUOTE_NONE = Undefined(int)
 QUOTE_NONNUMERIC = Undefined(int)
 
-class Error(Exception): pass
+class Error(Exception): ...
 
-def writer(csvfile, dialect=Undefined, **fmtparams): pass
-def reader(csvfile, dialect=Undefined, **fmtparams): pass
-def register_dialect(name, dialect=Undefined, **fmtparams): pass
-def unregister_dialect(name): pass
-def get_dialect(name): pass
-def list_dialects(): pass
-def field_size_limit(new_limit=Undefined): pass
+def writer(csvfile, dialect=Undefined, **fmtparams): ...
+def reader(csvfile, dialect=Undefined, **fmtparams): ...
+def register_dialect(name, dialect=Undefined, **fmtparams): ...
+def unregister_dialect(name): ...
+def get_dialect(name): ...
+def list_dialects(): ...
+def field_size_limit(new_limit=Undefined): ...
 
 class Dialect:
     delimiter = Undefined(Any)
@@ -27,7 +27,7 @@ class Dialect:
     skipinitialspace = Undefined(Any)
     lineterminator = Undefined(Any)
     quoting = Undefined(Any)
-    def __init__(self): pass
+    def __init__(self): ...
 
 class excel(Dialect):
     delimiter = Undefined(Any)
@@ -56,22 +56,22 @@ class DictReader:
     line_num = Undefined(Any)
     fieldnames = Undefined(Any) # Actually a property
     def __init__(self, f, fieldnames=None, restkey=None, restval=None, dialect='',
-                 *args, **kwds): pass
-    def __iter__(self): pass
-    def __next__(self): pass
+                 *args, **kwds): ...
+    def __iter__(self): ...
+    def __next__(self): ...
 
 class DictWriter:
     fieldnames = Undefined(Any)
     restval = Undefined(Any)
     extrasaction = Undefined(Any)
     writer = Undefined(Any)
-    def __init__(self, f, fieldnames, restval='', extrasaction='', dialect='', *args, **kwds): pass
-    def writeheader(self): pass
-    def writerow(self, rowdict): pass
-    def writerows(self, rowdicts): pass
+    def __init__(self, f, fieldnames, restval='', extrasaction='', dialect='', *args, **kwds): ...
+    def writeheader(self): ...
+    def writerow(self, rowdict): ...
+    def writerows(self, rowdicts): ...
 
 class Sniffer:
     preferred = Undefined(Any)
-    def __init__(self): pass
-    def sniff(self, sample, delimiters=None): pass
-    def has_header(self, sample): pass
+    def __init__(self): ...
+    def sniff(self, sample, delimiters=None): ...
+    def has_header(self, sample): ...

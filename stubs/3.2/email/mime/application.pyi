@@ -6,4 +6,4 @@ from typing import Undefined
 from email.mime.nonmultipart import MIMENonMultipart
 
 class MIMEApplication(MIMENonMultipart):
-    def __init__(self, _data, _subtype='', _encoder=Undefined, **_params): pass
+    def __init__(self, _data, _subtype='', _encoder=Undefined, **_params): ...

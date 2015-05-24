@@ -6,8 +6,8 @@ class Enum:
     name = ''
     value = ''
 
-    def __init__(self, value): pass
+    def __init__(self, value): ...
 
-class IntEnum(int, Enum): pass
+class IntEnum(int, Enum): ...
 
-def unique(enumeration): pass
+def unique(enumeration): ...

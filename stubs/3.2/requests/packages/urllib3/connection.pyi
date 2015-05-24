@@ -10,7 +10,7 @@ from .util import ssl_
 from . import util
 import http.client
 
-class DummyConnection: pass
+class DummyConnection: ...
 
 import ssl
 BaseSSLError = ssl.SSLError
@@ -36,16 +36,16 @@ class HTTPConnection(_HTTPConnection):
     is_verified = Undefined(Any)
     source_address = Undefined(Any)
     socket_options = Undefined(Any)
-    def __init__(self, *args, **kw): pass
-    def connect(self): pass
+    def __init__(self, *args, **kw): ...
+    def connect(self): ...
 
 class HTTPSConnection(HTTPConnection):
     default_port = Undefined(Any)
     key_file = Undefined(Any)
     cert_file = Undefined(Any)
-    def __init__(self, host, port=None, key_file=None, cert_file=None, strict=None, timeout=Undefined, **kw): pass
+    def __init__(self, host, port=None, key_file=None, cert_file=None, strict=None, timeout=Undefined, **kw): ...
     sock = Undefined(Any)
-    def connect(self): pass
+    def connect(self): ...
 
 class VerifiedHTTPSConnection(HTTPSConnection):
     cert_reqs = Undefined(Any)
@@ -55,10 +55,10 @@ class VerifiedHTTPSConnection(HTTPSConnection):
     key_file = Undefined(Any)
     cert_file = Undefined(Any)
     assert_hostname = Undefined(Any)
-    def set_cert(self, key_file=None, cert_file=None, cert_reqs=None, ca_certs=None, assert_hostname=None, assert_fingerprint=None): pass
+    def set_cert(self, key_file=None, cert_file=None, cert_reqs=None, ca_certs=None, assert_hostname=None, assert_fingerprint=None): ...
     sock = Undefined(Any)
     auto_open = Undefined(Any)
     is_verified = Undefined(Any)
-    def connect(self): pass
+    def connect(self): ...
 
 UnverifiedHTTPSConnection = Undefined(Any)

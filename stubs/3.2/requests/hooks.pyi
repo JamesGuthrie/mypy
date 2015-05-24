@@ -4,5 +4,5 @@ from typing import Undefined, Any
 
 HOOKS = Undefined(Any)
 
-def default_hooks(): pass
-def dispatch_hook(key, hooks, hook_data, **kwargs): pass
+def default_hooks(): ...
+def dispatch_hook(key, hooks, hook_data, **kwargs): ...

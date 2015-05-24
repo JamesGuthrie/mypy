@@ -1,6 +1,6 @@
 from typing import Undefined
 
-class _Feature: pass
+class _Feature: ...
 
 absolute_import = Undefined(_Feature)
 division = Undefined(_Feature)

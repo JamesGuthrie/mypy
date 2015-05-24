@@ -29,7 +29,7 @@ Timeout = timeout.Timeout
 Retry = retry.Retry
 
 class NullHandler(logging.Handler):
-    def emit(self, record): pass
+    def emit(self, record): ...
 
-def add_stderr_logger(level=Undefined): pass
-def disable_warnings(category=Undefined): pass
+def add_stderr_logger(level=Undefined): ...
+def disable_warnings(category=Undefined): ...

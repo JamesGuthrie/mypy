@@ -7,10 +7,10 @@ from typing import Any, Undefined
 class ModuleType:
     __name__ = Undefined(str)
     __file__ = Undefined(str)
-    def __init__(self, name: str, doc: Any) -> None: pass
+    def __init__(self, name: str, doc: Any) -> None: ...
 
-class MethodType: pass
-class BuiltinMethodType: pass
+class MethodType: ...
+class BuiltinMethodType: ...
 
 class TracebackType:
     tb_frame = Undefined(Any)
