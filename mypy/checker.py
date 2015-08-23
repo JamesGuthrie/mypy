@@ -346,6 +346,8 @@ class TypeChecker(NodeVisitor[Type]):
         self.is_stub = file_node.is_stub
         self.errors.set_file(path)
         self.errors.set_ignored_lines(file_node.ignored_lines)
+        if file_node.is_lib:
+            self.errors.ignore_errors = True
         self.globals = file_node.names
         self.locals = None
 
@@ -353,6 +355,7 @@ class TypeChecker(NodeVisitor[Type]):
             self.accept(d)
 
         self.errors.set_ignored_lines(set())
+        self.errors.ignore_errors = False
 
     def accept(self, node: Node, type_context: Type = None) -> Type:
         """Type check a node in the given type context."""

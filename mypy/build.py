@@ -628,6 +628,9 @@ class UnprocessedFile(State):
         """Parse the file, store global names and advance to the next state."""
         tree = self.parse(self.program_text, self.path)
 
+        if tree.is_lib:
+            self.errors().ignore_errors = True
+
         # Store the parsed module in the shared module symbol table.
         assert self.id not in self.manager.semantic_analyzer.modules, (
             'Module %s processed twice' % self.id)
@@ -676,6 +679,9 @@ class UnprocessedFile(State):
         # analyzer.
         tree.names = self.semantic_analyzer().globals
 
+        if tree.is_lib:
+            self.errors().ignore_errors = False
+
         # Replace this state object with a parsed state in BuildManager.
         self.switch_state(ParsedFile(self.info(), tree))
 
@@ -709,6 +715,11 @@ class UnprocessedFile(State):
                            pyversion=self.manager.pyversion,
                            custom_typing_module=self.manager.custom_typing_module)
         tree._fullname = self.id
+        path = sys.path
+        for p in sys.path:
+            if self.path.startswith(p):
+                tree.is_lib = True
+                break
         if self.errors().num_messages() != num_errs:
             self.errors().raise_error()
         return tree

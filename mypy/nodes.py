@@ -133,6 +133,8 @@ class MypyFile(SymbolNode):
     ignored_lines = None  # type: Set[int]
     # Is this file represented by a stub file (.pyi)?
     is_stub = False
+    # Is this file represented by a lib file (file in sys.path)?
+    is_lib = False
 
     def __init__(self,
                  defs: List[Node],

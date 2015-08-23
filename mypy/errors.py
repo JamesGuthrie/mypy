@@ -71,12 +71,16 @@ class Errors:
     # Ignore errors on these lines.
     ignored_lines = None  # type: Set[int]
 
+    # Ignore all errors
+    ignore_errors = False
+
     def __init__(self) -> None:
         self.error_info = []
         self.import_ctx = []
         self.type_name = [None]
         self.function_or_member = [None]
         self.ignored_lines = set()
+        self.ignore_errors = False
 
     def copy(self) -> 'Errors':
         new = Errors()
@@ -84,6 +88,7 @@ class Errors:
         new.import_ctx = self.import_ctx[:]
         new.type_name = self.type_name[:]
         new.function_or_member = self.function_or_member[:]
+        new.ignore_errors = self.ignore_errors
         return new
 
     def set_ignore_prefix(self, prefix: str) -> None:
@@ -134,7 +139,7 @@ class Errors:
 
     def report(self, line: int, message: str, blocker: bool = True) -> None:
         """Report message at the given line using the current error context."""
-        if line in self.ignored_lines:
+        if line in self.ignored_lines or self.ignore_errors:
             # Annotation requests us to ignore all errors on this line.
             return
         type = self.type_name[-1]

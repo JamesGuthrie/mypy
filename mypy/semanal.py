@@ -177,6 +177,8 @@ class SemanticAnalyzer(NodeVisitor):
     def visit_file(self, file_node: MypyFile, fnam: str) -> None:
         self.errors.set_file(fnam)
         self.errors.set_ignored_lines(file_node.ignored_lines)
+        if file_node.is_lib:
+            self.errors.ignore_errors = True
         self.cur_mod_node = file_node
         self.cur_mod_id = file_node.fullname()
         self.globals = file_node.names
@@ -199,6 +201,7 @@ class SemanticAnalyzer(NodeVisitor):
             remove_imported_names_from_symtable(self.globals, 'builtins')
 
         self.errors.set_ignored_lines(set())
+        self.errors.ignore_errors = False
 
     def visit_func_def(self, defn: FuncDef) -> None:
         self.errors.push_function(defn.name())

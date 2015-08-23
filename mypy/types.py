@@ -493,49 +493,49 @@ class TypeVisitor(Generic[T]):
     """
 
     def visit_unbound_type(self, t: UnboundType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_type_list(self, t: TypeList) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_error_type(self, t: ErrorType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_any(self, t: AnyType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_void(self, t: Void) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_none_type(self, t: NoneTyp) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_erased_type(self, t: ErasedType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_type_var(self, t: TypeVarType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_instance(self, t: Instance) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_callable_type(self, t: CallableType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_overloaded(self, t: Overloaded) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_tuple_type(self, t: TupleType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_star_type(self, t: StarType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_union_type(self, t: UnionType) -> T:
-        pass
+        raise RuntimeError("Not implemented in subclass")
 
     def visit_ellipsis_type(self, t: EllipsisType) -> T:
-        assert False               # XXX catch visitors that don't have this implemented yet
+        raise RuntimeError("Not implemented in subclass")
 
 
 class TypeTranslator(TypeVisitor[Type]):
